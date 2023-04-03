@@ -1,7 +1,7 @@
 package main
 
 import (
-	"design-pattern/factory-method/factory"
+	"design-pattern/simple-factory/calculator"
 	"fmt"
 )
 
@@ -14,16 +14,7 @@ func main() {
 	fmt.Println("请输入两个数字")
 	fmt.Scan(&num1, &num2)
 
-	var resultOperationFactory factory.OperationFactory
-	switch operator {
-	case "+":
-		resultOperationFactory = factory.AddOperationFactoryConstructor()
-	case "-":
-		resultOperationFactory = factory.SubOperationFactoryConstructor()
-	default:
-	}
-
-	resultOperation := resultOperationFactory.CreateOperation()
+	resultOperation := calculator.OperationFactoryConstructor().CreateOperation(operator)
 
 	resultOperation.SetNum1(num1)
 	resultOperation.SetNum2(num2)
